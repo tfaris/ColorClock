@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <script type="text/javascript">
+            function numberToString(n){
+                var s = n.toString();
+                if (n <= 9)
+                    s = "0" + s;
+                return s;
+            }
+            function updateColor(){
+                var d = new Date(),
+                    h = numberToString(d.getHours()),
+                    m = numberToString(d.getMinutes()),
+                    s = numberToString(d.getSeconds()),
+                    hexStr = "#" + h + m + s;
+                document.getElementsByTagName("body")[0]
+                    .style.backgroundColor = hexStr;
+                document.getElementsByClassName("clock")[0]
+                    .innerHTML = h + ":" + m + ":" + s;
+                document.getElementsByClassName("hex")[0]
+                    .innerHTML = hexStr;
+            }
+            window.setInterval(updateColor, 1000);
+        </script>
+        <style type="text/css">
+            .container{
+                position:absolute;
+                top:50%;
+                left:0;
+                right:0;
+            }
+            .clock, .hex{
+                color:white;
+                font-size:42px;
+                font-family:monospace;                
+                text-align:center;
+                margin:0;
+            }
+            .hex{
+                font-size:12px;
+            }
+        </style>
+    </head>
+    <body>
+        <span class="container">
+            <p class="clock"></p>
+            <p class="hex"></p>
+        </span>
+        <script type="text/javascript">updateColor();</script>
+    </body>
+</html>
